@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span>User Addresses</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-user-address" [routerLink]="['/user-address/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new User Address
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="userAddresses?.length === 0">
+        <span>No userAddresses found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="userAddresses && userAddresses.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Address</span></th>
+                    <th scope="col" ><span>City</span></th>
+                    <th scope="col" ><span>State</span></th>
+                    <th scope="col" ><span>Country</span></th>
+                    <th scope="col" ><span>Zipcode</span></th>
+                    <th scope="col" ><span>Is Default</span></th>
+                    <th scope="col" ><span>Address Type</span></th>
+                    <th scope="col" ><span>User Details</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let userAddress of userAddresses ;trackBy: trackId">
+                    <td><a [routerLink]="['/user-address', userAddress.id, 'view']">{{ userAddress.id }}</a></td>
+                    <td>{{ userAddress.address }}</td>
+                    <td>{{ userAddress.city }}</td>
+                    <td>{{ userAddress.state }}</td>
+                    <td>{{ userAddress.country }}</td>
+                    <td>{{ userAddress.zipcode }}</td>
+                    <td>{{ userAddress.isDefault }}</td>
+                    <td>{{ userAddress.addressType }}</td>
+                    <td>
+                        <div *ngIf="userAddress.userDetails">
+                            <a [routerLink]="['/user-details', userAddress.userDetails?.id, 'view']" >{{ userAddress.userDetails?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/user-address', userAddress.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/user-address', userAddress.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(userAddress)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

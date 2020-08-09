@@ -1,0 +1,64 @@
+{
+  "name": "UserDetails",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gender",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "birthDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "phone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "subscribeToOffer",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "passwordChangedOn",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "preferredLanguage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "preferredCurrency",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "userDetails",
+      "relationshipName": "user",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "userAddress",
+      "otherEntityRelationshipName": "userDetails",
+      "relationshipName": "userAddress"
+    }
+  ],
+  "changelogDate": "20200809063914",
+  "entityTableName": "user_details",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

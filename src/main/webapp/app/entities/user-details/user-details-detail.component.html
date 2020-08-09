@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="userDetails">
+            <h2><span>User Details</span> {{ userDetails.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Type</span></dt>
+                <dd>
+                    <span>{{ userDetails.type }}</span>
+                </dd>
+                <dt><span>Gender</span></dt>
+                <dd>
+                    <span>{{ userDetails.gender }}</span>
+                </dd>
+                <dt><span>Birth Date</span></dt>
+                <dd>
+                    <span>{{ userDetails.birthDate }}</span>
+                </dd>
+                <dt><span>Phone</span></dt>
+                <dd>
+                    <span>{{ userDetails.phone }}</span>
+                </dd>
+                <dt><span>Subscribe To Offer</span></dt>
+                <dd>
+                    <span>{{ userDetails.subscribeToOffer }}</span>
+                </dd>
+                <dt><span>Password Changed On</span></dt>
+                <dd>
+                    <span>{{ userDetails.passwordChangedOn }}</span>
+                </dd>
+                <dt><span>Preferred Language</span></dt>
+                <dd>
+                    <span>{{ userDetails.preferredLanguage }}</span>
+                </dd>
+                <dt><span>Preferred Currency</span></dt>
+                <dd>
+                    <span>{{ userDetails.preferredCurrency }}</span>
+                </dd>
+                <dt><span>User</span></dt>
+                <dd>
+                    {{ userDetails.user?.id }}
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/user-details', userDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
